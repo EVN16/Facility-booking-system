@@ -1,90 +1,101 @@
-# Sistem Booking Fasilitas
+# Facility Booking System
 
-Sebuah aplikasi web modern berbasis **React** (Front-End) dan **Laravel** (Back-End) untuk melakukan pemesanan (booking) fasilitas seperti lapangan olahraga, ruang pertemuan (meeting room), dan lainnya. Sistem ini dilengkapi dengan desain antarmuka bergaya *Glassmorphism*, dashboard pengelolaan admin, dan fitur ekspor laporan keuangan.
+A modern web application for booking facilities such as sports fields, meeting rooms, and more. Built with **React** (front-end) and **Laravel** (back-end), featuring a *Glassmorphism*-style interface, an admin management dashboard, and financial report exports.
 
-## 🚀 Fitur Utama
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-### 👥 Bagian Pengguna (User)
-- **Katalog Fasilitas**: Menampilkan daftar fasilitas beserta harga, detail lokasi, dan kapasitas.
-- **Pemesanan Interaktif**: Form booking menggunakan kalender interaktif (`FullCalendar`) yang memungkinkan pengguna menyorot (drag) jadwal untuk memesan jam secara instan.
-- **Validasi Waktu**: Pengguna tidak dapat memilih waktu yang telah berlalu (past-time validation) dan sistem mencegah jadwal bentrok (overlapping schedules).
-- **Riwayat Transaksi**: Panel khusus pengguna untuk melihat riwayat pemesanan dan status pemesanan mereka.
+## 🚀 Features
 
-### 🛡️ Bagian Admin (SaaS-like Dashboard)
-- **Ringkasan Sistem**: Menampilkan metrik seperti Total Pendapatan, Total Booking, Fasilitas Tersedia, dan jumlah antrean (Pending).
-- **Manajemen Fasilitas (CRUD)**: Menambah, mengubah, atau menghapus fasilitas baru beserta kelengkapannya.
-- **Kelola Pemesanan**: Menyetujui atau menolak pesanan yang baru masuk dari pengguna.
-- **Laporan & Ekspor PDF**: Melihat grafik pendapatan bulanan secara interaktif (menggunakan `recharts`) dan mengekspor rincian transaksi menggunakan *library* domPDF.
+### 👥 For Users
+- **Facility Catalog** — Browse facilities with prices, location details, and capacity.
+- **Interactive Booking** — Book time slots by dragging on an interactive calendar (`FullCalendar`).
+- **Time Validation** — Past times can't be selected, and overlapping bookings are blocked.
+- **Booking History** — View your bookings and their statuses in a dedicated panel.
 
-## 🛠️ Teknologi yang Digunakan
+### 🛡️ For Admins
+- **Dashboard Overview** — Key metrics: total revenue, total bookings, available facilities, and pending queue.
+- **Facility Management (CRUD)** — Add, edit, or remove facilities and their details.
+- **Booking Management** — Approve or reject incoming bookings.
+- **Reports & PDF Export** — Interactive monthly revenue charts (`Recharts`) and transaction exports to PDF (`domPDF`).
 
-### Front-End
-- **React.js (Vite)**: Framework utama untuk antarmuka pengguna yang cepat dan responsif.
-- **Tailwind CSS**: Digunakan untuk *styling* dan desain utilitas.
-- **Zustand**: Untuk manajemen *state* ringan (contohnya mengatur sesi Login/Autentikasi).
-- **React Query**: Mengelola pengambilan, *caching*, dan mutasi data dari API.
-- **FullCalendar**: Integrasi kalender interaktif untuk pemilihan jadwal.
-- **Recharts**: Merender grafik data statistik yang interaktif di panel Admin.
-- **Lucide React**: Kumpulan ikon SVG modern dan fleksibel.
+## 🛠️ Tech Stack
 
-### Back-End
-- **Laravel 11**: Framework utama untuk membuat RESTful API (menggunakan PHP).
-- **MySQL**: Basis data relasional.
-- **Laravel Sanctum**: Otentikasi ringan berbasis *Token API*.
-- **domPDF**: Fitur konversi dan ekspor laporan ke format `.pdf`.
+| Layer | Technologies |
+| --- | --- |
+| Front-End | React (Vite), Tailwind CSS, Zustand, React Query, FullCalendar, Recharts, Lucide React |
+| Back-End | Laravel 11, MySQL, Laravel Sanctum (token auth), domPDF |
 
-## ⚙️ Cara Menjalankan Aplikasi di Komputer Anda (Local Development)
+## ⚙️ Getting Started
 
-Proyek ini terbagi menjadi dua sub-direktori, yakni `Front-End` dan `Back-End`. Pastikan Anda sudah menginstal **PHP (Composer)**, **Node.js (NPM)**, dan **MySQL** di komputer Anda.
+### Prerequisites
+- PHP 8.2+ with Composer
+- Node.js (npm)
+- MySQL (e.g. via XAMPP or Laragon)
 
-### 1. Konfigurasi Back-End (Laravel)
+The project has two directories: `Front-End` and `Back-End`.
+
+### 1. Back-End Setup (Laravel)
+
 ```bash
 cd Back-End
 
-# Instal seluruh dependensi PHP
+# Install PHP dependencies
 composer install
 
-# Buat file Environment (salin dari .env.example)
+# Create the environment file (copy from the example)
 cp .env.example .env
 
-# Jalankan server basis data Anda (contoh: aktifkan MySQL pada XAMPP/Laragon)
-# Sesuaikan nama database pada file .env (misalnya DB_DATABASE=sistem_booking)
+# Start your database server (e.g. enable MySQL in XAMPP/Laragon)
+# Set your database name in .env (e.g. DB_DATABASE=sistem_booking)
 
-# Buat tabel dan jalankan data awal (Seeder)
+# Create the tables and seed initial data
 php artisan migrate --seed
 
-# Buat kunci keamanan aplikasi
+# Generate the application key
 php artisan key:generate
 
-# Jalankan server
+# Run the server
 php artisan serve
 ```
-*Server API secara default akan berjalan di `http://127.0.0.1:8000`.*
 
-### 2. Konfigurasi Front-End (React/Vite)
-Buka jendela terminal baru, kemudian jalankan:
+*The API server runs at `http://127.0.0.1:8000` by default.*
+
+### 2. Front-End Setup (React/Vite)
+
+Open a new terminal window, then run:
+
 ```bash
 cd Front-End
 
-# Instal seluruh dependensi JavaScript
+# Install JavaScript dependencies
 npm install
 
-# Jalankan development server
+# Run the development server
 npm run dev
 ```
-*Aplikasi Front-End akan terbuka otomatis di browser Anda (biasanya di `http://localhost:5173`).*
 
-## 🔑 Kredensial Uji Coba
-Karena *database* telah di-*seed* melalui `php artisan migrate --seed`, Anda bisa mencoba masuk menggunakan akun berikut:
+*The app will open in your browser, usually at `http://localhost:5173`.*
 
-**Admin:**
-- Email: `admin@admin.com`
-- Password: `password`
+## 🔑 Demo Accounts
 
-**Pengguna Biasa (User):**
-- Email: `user@user.com`
-- Password: `password`
+Seeded via `php artisan migrate --seed`:
+
+| Role | Email | Password |
+| --- | --- | --- |
+| Admin | admin@admin.com | `password` |
+| User | user@user.com | `password` |
+
+## 📁 Project Structure
+
+```
+SistemBooking/
+├── Back-End/   # Laravel 11 REST API
+└── Front-End/  # React + Vite app
+```
 
 ---
 
-*Dikembangkan untuk memberikan kemudahan bagi manajemen pengelolaan jadwal dan fasilitas secara digital.*
+*Built to make facility and schedule management easy and fully digital.*
