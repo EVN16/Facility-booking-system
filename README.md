@@ -6,6 +6,7 @@ A modern web application for booking facilities such as sports fields, meeting r
 ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 ## 🚀 Features
 
@@ -91,10 +92,14 @@ Seeded via `php artisan migrate --seed`:
 ## 📁 Project Structure
 
 ```
-SistemBooking/
+facility-booking-system/
 ├── Back-End/   # Laravel 11 REST API
 └── Front-End/  # React + Vite app
 ```
+
+## 📄 License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
 ---
 
